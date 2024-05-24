@@ -1,0 +1,30 @@
+body{
+    margin: 0;
+    background-color: aquamarine;
+}
+/* CSS for the navigation menu */
+nav {
+    text-align: center; /* Center align the navigation links */
+}
+
+nav ul {
+    list-style-type: none; /* Remove bullet points from the list */
+    margin: 0;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline; /* Display list items horizontally */
+    margin-right: 20px; /* Add spacing between list items */
+}
+
+nav ul li a {
+    text-decoration: none; /* Remove underline from links */
+    color: white; /* Set the color of the links */
+    font-size: 23px; /* Adjust font size */
+    font-weight: 800;
+}
+
+nav ul li a:hover {
+    color: #555; /* Change link color on hover */
+}
