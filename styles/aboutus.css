@@ -59,6 +59,7 @@ a:hover::after {
     display: flex;
     align-items: center;
     justify-content: center;
+
 }
 .sus-landing > h1, .sus-materials > h1, .sus-carbon > h1, .sus-waste > h1{
     font-family: "Inter", sans-serif;
@@ -91,25 +92,26 @@ a:hover::after {
         transform: translateX(0);
     }
 }
+
 .sus-landing{
-    background-image: url("/images/1.jpg");
+    background-image: url("/images/1.png");
     background-position: center;
     background-size: cover;
     background-attachment: fixed;
     z-index: 200;
 }
 .sus-materials{
-    background-image: url("/images/2.jpg");
+    background-image: url("/images/2.png");
     background-size: cover;
     background-attachment: fixed;
 }
 .sus-carbon{
-    background-image: url("/images/2.5.jpg");
+    background-image: url("/images/2.5.png");
     background-size: cover;
     background-attachment: fixed;
 }
 .sus-waste{
-    background-image: url("/images/3.jpg");
+    background-image: url("/images/3.png");
     background-size: cover;
     background-attachment: fixed;
 }
