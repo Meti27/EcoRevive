@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="styles/aboutus.css">
+</head>
+<body>
+    <nav>
+        <div id="nav">
+            <div id="navbar">
+                
+                <div class="burger-menu" id="burger-menu">
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                </div>
+                <div class="menu-items" id="menu-items">
+                    <h1 style="color: white;">Eco Revive</h1>
+                    <h1><a href="index.html">Home</a></h1>
+                    <h1><a href="about.html">About</a></h1>
+                    <h1><a href="fund.html">Fundraiser</a></h1>
+                    <h1><a href="blog.html">Blog</a></h1>
+                    <h1><a href="contact.html">Contact</a></h1>
+                    
+                </div>
+            </div>
+        </div>
+    </nav>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+             const burgerMenu = document.getElementById('burger-menu');
+             const menuItems = document.getElementById('menu-items');
+     
+             burgerMenu.addEventListener('click', function () {
+                 menuItems.classList.toggle('active');
+             });
+         });
+     </script>
+</body>
+</html>

@@ -84,13 +84,14 @@ a:hover::after {
     cursor: pointer;
 }
 
-.burger-menu .barm {
+.burger-menu, .barm {
     width: 25px;
-    height: 3px;
-    background-color: white!important; /* Ensure burger menu bars are white */
-    margin: 4px 0;
+    height: 15px;
+    background-color: white !important;
+   
     transition: 0.4s;
 }
+
 .add-new-button-container {
     margin-top: 15vh; /* Adjust to place it just below the navbar */
     display: flex;
@@ -120,11 +121,19 @@ a:hover::after {
 
     .burger-menu {
         display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
         color: white !important;
         width: 10%;
         padding-left: 2%;
     }
-
+    .burger-menu, .barm {
+        width: 25px;
+        height: 3px;
+        background-color: white !important;
+        transition: 0.4s;
+       
+    }
     .menu-items {
         position: fixed; /* Change to fixed for better positioning */
         top: 0;

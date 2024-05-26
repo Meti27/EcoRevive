@@ -268,7 +268,7 @@ a:hover::after {
         @media(max-width: 768px){
         .fundraiser-section {
         margin-bottom: 10vh;
-        width: 80vw;
+        width: 80%;
         }
         .fundraiser-card {
         margin-top: 10vh;
@@ -462,6 +462,9 @@ footer {
     .intro-text {
         width: 90%;
         top: 3%;
+    }
+    .fundraiser-section{
+        width: 74.3%;
     }
     .intro-text h1 {
         font-size: 1.5rem;
