@@ -7,55 +7,125 @@
     <link rel="stylesheet" href="styles/fund.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <nav>
-        <div id="nav">
-        <div id="navbar">
-            <h1 style="color: rgb(255, 255, 255);">Eco Revive</h1>
-        <h1><a href="index.html">Home</a></h1>
-        <h1><a href="about.html">About</a></h1>
-        <h1><a href="fund.html">Fundraiser</a></h1>
-        <h1><a href="blog.html">Blog</a></h1>
-        <h1><a href="contact.html">Contact</a></h1>
-        </div>
-        </div>
-        </nav>
-
-        <div class="fundraiser-section">
-            <div class="fundraiser-card">
-                <h1>Support Our Cause</h1>
-                <p>Join us in making a difference! Your contributions will help us clean the streets, reduce air pollution, and create a healthier environment for everyone. Every donation, no matter how small, makes a significant impact.</p>
-                
-                <form id="donation-form" action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
-                    <input type="hidden" name="cmd" value="_s-xclick">
-                    <input type="hidden" name="hosted_button_id" value="YOUR_BUTTON_ID">
+        <nav>
+            <div id="nav">
+                <div id="navbar">
                     
-                    <div class="form-group">
-                        <label for="name">Name</label>
-                        <input type="text" id="name" name="name">
+                    <div class="burger-menu" id="burger-menu">
+                        <div class="bar"></div>
+                        <div class="bar"></div>
+                        <div class="bar"></div>
                     </div>
-                    
-                    <div class="form-group">
-                        <label for="reason">Reason for Funding</label>
-                        <select id="reason" name="reason" required>
-                            <option value="environmental_cleanup">Environmental Cleanup</option>
-                            <option value="pollution_reduction">Pollution Reduction</option>
-                            <option value="community_awareness">Community Awareness Programs</option>
-                        </select>
+                    <div class="menu-items" id="menu-items">
+                        <h1 style="color: white;">Eco Revive</h1>
+                        <h1><a href="index.html">Home</a></h1>
+                        <h1><a href="about.html">About</a></h1>
+                        <h1><a href="fund.html">Fundraiser</a></h1>
+                        <h1><a href="blog.html">Blog</a></h1>
+                        <h1><a href="contact.html">Contact</a></h1>
+                        
                     </div>
-                    
-                    <div class="form-group">
-                        <label for="message">Message</label>
-                        <textarea id="message" name="message" rows="4"></textarea>
-                    </div>
-                    
-                    <button type="submit" class="donate-button">Donate Now</button>
-                </form>
+                </div>
             </div>
+        </nav>
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                 const burgerMenu = document.getElementById('burger-menu');
+                 const menuItems = document.getElementById('menu-items');
+         
+                 burgerMenu.addEventListener('click', function () {
+                     menuItems.classList.toggle('active');
+                 });
+             });
+         </script>
+       <div class="fundraiser-section">
+        <div class="fundraiser-card">
+        <h1>Support Our Cause</h1>
+        <p>Join us in making a difference! Your contributions will help us clean the streets, reduce air pollution,
+        and create a healthier environment for everyone. Every donation, no matter how small, makes a
+        significant impact.</p>
+        
+        <form id="donation-form">
+        
+        <div class="form-group">
+        <label for="name">Name</label>
+        <input type="text" id="name" name="name">
+        </div>
+        
+        <div class="form-group">
+        <label for="reason">Reason for Funding</label>
+        <select id="reason" name="reason" required>
+        <option value="environmental_cleanup">Environmental Cleanup</option>
+        <option value="pollution_reduction">Pollution Reduction</option>
+        <option value="community_awareness">Community Awareness Programs</option>
+        </select>
+        </div>
+        
+        <div class="form-group">
+        <label for="message">Message</label>
+        <textarea id="message" name="message" rows="4"></textarea>
+        </div>
+        
+        </form>
+        <button class="donate-button" onclick="show('fundPart')">Donate Now</button>
+        </div>
+        </div>
+        <div id="fundPart">
+        <div id="fundUs">
+        <section class="donation-form">
+        <h2>Make a Donation</h2>
+        <form action="#" method="post">
+        <div class="form-group">
+        <label for="amount">Donation Amount ($):</label>
+        <input type="number" id="amount" name="amount" min="1" required>
+        </div>
+        <div class="form-group">
+        <label for="name">Full Name:</label>
+        <input type="text" id="name" name="name" required>
+        </div>
+        <div class="form-group">
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+        </div>
+        <div class="form-group">
+        <label for="card">Credit Card Number:</label>
+        <input type="text" id="card" name="card" minlength="16" maxlength="16" placeholder="Must contain 16 digits" required>
+        </div>
+        <div class="form-group">
+        <label for="expiry">Expiry Date:</label>
+        <input type="text" id="expiry" name="expiry" placeholder="MM/YYYY" required>
+        </div>
+        <div class="form-group">
+        <label for="cvv">CVV:</label>
+        <input type="text" id="cvv" name="cvv" maxlength="3" placeholder="Must contain 3 digits" required>
+        </div>
+        <div class="form-group">
+        <label for="card-type">Card Type:</label>
+        <select id="card-type" name="card-type" required>
+        <option value="" disabled selected>Select your card type</option>
+        <option value="visa">Visa</option>
+        <option value="mastercard">Mastercard</option>
+        </select>
+        </div>
+        <button type="submit">Donate Now</button>
+        </form>
+        </section>
+        </div>
         </div>
     
-    
+    <script>function show(elementId) {
+        var p = document.getElementById(elementId);
+        if (p) {
+        p.style.display = 'block';
+        p.scrollIntoView({ behavior: 'smooth' });
+        }else {
+        console.error('Element with ID' + elementId + 'not found.');
+        }
+        };</script>
         <footer>
             <div class="footer-left"><img src="images/LOGO.png" alt=""></div>
             <div class="footer-middle"><h2>Sponsors</h2>
@@ -68,18 +138,20 @@
             </div>
             <div class="footer-right">
                 <h2>Contact Us</h2>
-                <a href="">metiseni27@gmail.com</a>
-                <a href="">endrit.ibraimi04@gmail.com</a>
-                <a href="">+389 70 810 878</a>
-                <a href="">+389 71 274 200</a>
-                <div class="social-container">
-                    <ul class="social-icons">
-                        <li><a href="#"><i class="fa fa-instagram"></i></a></li>
-                        <li><a style="padding:1vw 1.2vw;" href="#"><i class="fa fa-facebook"></i></a></li>
-                        <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-                    </ul>
+                <a href="mailto:metiseni27@gmail.com">metiseni27@gmail.com</a>
+                <a href="mailto:endrit.ibraimi04@gmail.com">endrit.ibraimi04@gmail.com</a>
+                <a href="tel:+389 70 810 878">+389 70 810 878</a>
+                <a href="tel:+389 71 274 200">+389 71 274 200</a>
+                
             </div>
-            
+            <div class="social-container">
+              <ul class="social-icons">
+                  <li><a href="#"><i class="fa fa-instagram"></i></a></li>
+                  <li><a  href="#"><i class="fa fa-facebook"></i></a></li>
+                  <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+              </ul>
+      </div>
         </footer>
+        <p  style="text-align: center; color: #10283D;">© 2024 EcoRevive. All Rights Reserved.</p>
 </body>
 </html>

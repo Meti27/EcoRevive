@@ -14,17 +14,36 @@
 <body>
     <nav>
         <div id="nav">
-        <div id="navbar">
-            <h1 style="color: rgb(255, 255, 255);">Eco Revive</h1>
-        <h1><a href="index.html">Home</a></h1>
-        <h1><a href="about.html">About</a></h1>
-        <h1><a href="fund.html">Fundraiser</a></h1>
-        <h1><a href="blog.html">Blog</a></h1>
-        <h1><a href="contact.html">Contact</a></h1>
+            <div id="navbar">
+                
+                <div class="burger-menu" id="burger-menu">
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                </div>
+                <div class="menu-items" id="menu-items">
+                    <h1 style="color: white;">Eco Revive</h1>
+                    <h1><a href="index.html">Home</a></h1>
+                    <h1><a href="about.html">About</a></h1>
+                    <h1><a href="fund.html">Fundraiser</a></h1>
+                    <h1><a href="blog.html">Blog</a></h1>
+                    <h1><a href="contact.html">Contact</a></h1>
+                    
+                </div>
+            </div>
         </div>
-        </div>
-        </nav>
-        <div class="sus-landing">
+    </nav>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+             const burgerMenu = document.getElementById('burger-menu');
+             const menuItems = document.getElementById('menu-items');
+     
+             burgerMenu.addEventListener('click', function () {
+                 menuItems.classList.toggle('active');
+             });
+         });
+     </script>
+        <div class="sus-landing" id="Introduction">
             <h1 class="text">At EcoRevive, we are passionate about creating a cleaner, healthier environment for everyone. Our mission is to raise awareness about the pressing issues of air pollution and littering, and to take actionable steps towards a cleaner, greener future.</h1>
         </div>
         
@@ -36,7 +55,7 @@
             <h1> "Our initiatives include community clean-up events, educational workshops, and partnerships with local authorities and organizations to tackle pollution at its source. We are also excited to integrate an air pollution API for North Macedonia, providing real-time data to keep our community informed and engaged."</h1>
         </div>
         
-        <div  class="sus-waste">
+        <div  class="sus-waste" id="joinus">
             <h1> "Join us in our journey to revive the earth, one step at a time. Together, we can make a difference and ensure a healthier planet for future generations."</h1>
         </div>
         <footer>
@@ -51,18 +70,21 @@
             </div>
             <div class="footer-right">
                 <h2>Contact Us</h2>
-                <a href="">metiseni27@gmail.com</a>
-                <a href="">endrit.ibraimi04@gmail.com</a>
-                <a href="">+389 70 810 878</a>
-                <a href="">+389 71 274 200</a>
-                <div class="social-container">
-                    <ul class="social-icons">
-                        <li><a href="#"><i class="fa fa-instagram"></i></a></li>
-                        <li><a style="padding:1vw 1.2vw;" href="#"><i class="fa fa-facebook"></i></a></li>
-                        <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-                    </ul>
-            </div>
+                <a href="mailto:metiseni27@gmail.com">metiseni27@gmail.com</a>
+            <a href="mailto:endrit.ibraimi04@gmail.com">endrit.ibraimi04@gmail.com</a>
+            <a href="tel:+389 70 810 878">+389 70 810 878</a>
+            <a href="tel:+389 71 274 200">+389 71 274 200</a>
             
+                
+            </div>
+            <div class="social-container">
+              <ul class="social-icons">
+                  <li><a href="#"><i class="fa fa-instagram"></i></a></li>
+                  <li><a  href="#"><i class="fa fa-facebook"></i></a></li>
+                  <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+              </ul>
+      </div>
         </footer>
+        <p  style="text-align: center; color: #10283D;">© 2024 EcoRevive. All Rights Reserved.</p>
 </body>
 </html>

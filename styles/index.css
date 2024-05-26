@@ -8,7 +8,6 @@ body {
     display: flex;
     flex-direction: column;
     box-sizing: border-box;
-    background-color: #10283D;
 }
 
 /* Navbar styling */
@@ -19,16 +18,18 @@ body {
     width: 100%;
     display: flex;
     justify-content: space-evenly;
-    position: fixed;
+    position: absolute;
     top: 0;
     z-index: 1000;
     flex-direction: row;
+    font-family: "Poppins", sans-serif;
 }
 
-#navbar h1 a {
+#navbar h1 a, h1 {
     text-decoration: none;
     color: rgb(255, 255, 255);
-    font-weight: 600;
+    font-weight: 500;
+    font-size: 2rem;
 }
 #navbar > h1 > a:hover {
     text-decoration: none;
@@ -95,14 +96,14 @@ a:hover::after {
     .burger-menu {
         display: flex;
         width: 10%;
+        padding-left: 2%;
     }
-
     .menu-items {
-        position: absolute;
+        position: fixed; /* Change to fixed for better positioning */
         top: 0;
         right: -100%;
         height: 100vh;
-        width: 50%;
+        width: 60%; /* Adjust width for better spacing */
         background-color: #10283D;
         display: flex;
         flex-direction: column;
@@ -110,14 +111,18 @@ a:hover::after {
         align-items: center;
         transition: right 0.3s ease-in-out;
         z-index: 1001;
+        box-sizing: border-box;
     }
-
+    .copyright{
+        color: white;
+    }
     .menu-items h1 {
         width: 100%;
         text-align: center;
         margin: 0;
         padding: 20px 0;
     }
+  
 
     .menu-items h1 a {
         color: white;
@@ -143,6 +148,7 @@ a:hover::after {
     width: 100%;
     height: 100%;
     object-fit: cover;
+   
 }
 
 /* Intro text styling */
@@ -151,7 +157,7 @@ a:hover::after {
     top: 18%;
     left: 50%;
     transform: translateX(-50%);
-    width: 80%;
+    width: 40%;
     color: white;
     text-align: center;
 }

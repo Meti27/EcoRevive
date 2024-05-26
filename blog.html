@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fundraiser</title>
+    <title>Blog</title>
     <link rel="stylesheet" href="styles/blog.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
@@ -13,53 +13,182 @@
             height: 500px; /* Ensure the map has height */
             width: 100%;
         }
+        .map-controls {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            z-index: 1000;
+            background: white;
+            padding: 10px;
+            border-radius: 5px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+        }
+        .map-legend {
+            position: absolute;
+            bottom: 10px;
+            left: 10px;
+            z-index: 1000;
+            background: white;
+            padding: 10px;
+            border-radius: 5px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+        }
     </style>
-</head>
-<body>
-    <nav>
-        <div id="nav">
-        <div id="navbar">
-            <h1 style="color: rgb(255, 255, 255);">Eco Revive</h1>
-        <h1><a href="index.html">Home</a></h1>
-        <h1><a href="about.html">About</a></h1>
-        <h1><a href="fund.html">Fundraiser</a></h1>
-        <h1><a href="blog.html">Blog</a></h1>
-        <h1><a href="contact.html">Contact</a></h1>
-        </div>
-        </div>
-        </nav>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  
+  <!-- Icons -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css" integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk" crossorigin="anonymous">
+  <!-- Bootstrap CDN -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+  <!-- Our Stylesheet -->
 
-        <div class="map-section">
-            <h1>Air Quality in North Macedonia</h1>
-            <div id="map"></div>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+  <title>Blog App</title>
+</head>
+
+<body onload="initializeMap(), loadData() ">
+  <nav>
+      <div id="nav">
+          <div id="navbar">
+        
+              <div class="burger-menu" id="burger-menu">
+                  <div  class="barm"></div>
+                  <div class="barm"></div>
+                  <div class="barm"></div>
+              </div>
+              <div class="menu-items" id="menu-items">
+                  <h1 style="color: white;">Eco Revive</h1>
+                  <h1><a href="index.html">Home</a></h1>
+                  <h1><a href="about.html">About</a></h1>
+                  <h1><a href="fund.html">Fundraiser</a></h1>
+                  <h1><a href="blog.html">Blog</a></h1>
+                  <h1><a href="contact.html">Contact</a></h1>
+                  
+              </div>
+          </div>
+      </div>
+  </nav>
+  <script>
+   
+ </script>
+  <div class="add-new-button-container">
+      <button type="button" class="btn btn-primary rounded-pill" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+          <i class="fas fa-plus"></i> Add New
+      </button>
+  </div>
+  <!-- Navbar Modal -->
+
+  <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+      <div class="modal-dialog">
+          <div class="modal-content">
+              <div class="modal-header">
+                  <h5 class="modal-title" id="staticBackdropLabel">Add New Blog</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                  <form>
+                      <div class="mb-3">
+                          <label for="imagefile" class="form-label">Upload Image</label>
+                          <input type="file" class="form-control" id="imagefile" accept="image/*">
+                      </div>
+                      <div class="mb-3">
+                          <label for="title" class="form-label">Title</label>
+                          <input type="text" class="form-control" id="title" placeholder="Title">
+                      </div>
+                      <div class="mb-3">
+                          <label for="location" class="form-label">Location</label>
+                          <input type="text" class="form-control" id="location" placeholder="Location" readonly>
+                          <button type="button" class="btn btn-primary mt-2" onclick="getLocation()">Share Location</button>
+                      </div>
+                      <div class="mb-3">
+                          <label for="city" class="form-label">City</label>
+                          <input type="text" class="form-control" id="city" placeholder="City">
+                      </div>
+                      <div class="mb-3">
+                          <label for="message" class="form-label">Message</label>
+                          <textarea rows="4" class="form-control" id="message" placeholder="Message"></textarea>
+                      </div>
+                  </form>
+              </div>
+              <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                  <button type="button" class="btn btn-primary" data-bs-dismiss="modal" onclick="saveChanges()">Save Changes</button>
+              </div>
+          </div>
+      </div>
+  </div>
+  <!-- Card Modal -->
+  <div class="modal fade" id="showblog" tabindex="-1" aria-labelledby="showTaskLabel" aria-hidden="true">
+      <div class="modal-dialog modal-lg">
+          <div class="modal-content">
+              <div class="modal-body blog__modal__body"></div>
+              <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              </div>
+          </div>
+      </div>
+  </div>
+  <!-- Navbar -->
+
+ 
+  <!-- Main Container -->
+  <div class="container">
+      <section>
+          <div class="row blog__container mt-7 mb-3"></div>
+      </section>
+  </div>
+  <!-- Scripts -->
+ 
+  <script src="test.js"></script>
+
+  <div class="map-section">
+    <h1>Air Quality in North Macedonia</h1>
+    <div id="map"></div>
+    <div class="map-controls">
+        <button onclick="zoomIn()">Zoom In</button>
+        <button onclick="zoomOut()">Zoom Out</button>
+        <button onclick="resetView()">Reset View</button>
+    </div>
+    <div class="map-legend">
+        <h4>Air Quality Index (AQI)</h4>
+        <p><span style="color:green;">&#9679;</span> Good (0-50)</p>
+        <p><span style="color:yellow;">&#9679;</span> Moderate (51-100)</p>
+        <p><span style="color:orange;">&#9679;</span> Unhealthy for Sensitive Groups (101-150)</p>
+        <p><span style="color:red;">&#9679;</span> Unhealthy (151-200)</p>
+        <p><span style="color:purple;">&#9679;</span> Very Unhealthy (201-300)</p>
+    </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.min.js" integrity="sha384-Atwg2Pkwv9vp0ygtn1JAojH0nYbwNJLPhwyoVbhoPwBhjQPR5VtM2+xf0Uwh9KtT" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+<script src="blog.js"></script>
+      <footer>
+        <div class="footer-leftm"><img src="images/LOGO.png" alt=""></div>
+        <div class="footer-middlem"><h2>Sponsors</h2>
+        <h3>South East European University</h3>
+        <h3>Alpakeco</h3>
+        <h3>AnrraCentrum</h3>
+        <h3>EVN</h3>
+        <h3></h3>
+        <h3></h3>
         </div>
-    
-    
-        <footer>
-            <div class="footer-left"><img src="images/LOGO.png" alt=""></div>
-            <div class="footer-middle"><h2>Sponsors</h2>
-            <h3>South East European University</h3>
-            <h3>Alpakeco</h3>
-            <h3>AnrraCentrum</h3>
-            <h3>EVN</h3>
-            <h3></h3>
-            <h3></h3>
-            </div>
-            <div class="footer-right">
-                <h2>Contact Us</h2>
-                <a href="">metiseni27@gmail.com</a>
-                <a href="">endrit.ibraimi04@gmail.com</a>
-                <a href="">+389 70 810 878</a>
-                <a href="">+389 71 274 200</a>
-                <div class="social-container">
-                    <ul class="social-icons">
-                        <li><a href="#"><i class="fa fa-instagram"></i></a></li>
-                        <li><a style="padding:1vw 1.2vw;" href="#"><i class="fa fa-facebook"></i></a></li>
-                        <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-                    </ul>
-            </div>
+        <div class="footer-rightm">
+            <h2>Contact Us</h2>
+            <a href="mailto:metiseni27@gmail.com">metiseni27@gmail.com</a>
+            <a href="mailto:endrit.ibraimi04@gmail.com">endrit.ibraimi04@gmail.com</a>
+            <a href="tel:+389 70 810 878">+389 70 810 878</a>
+            <a href="tel:+389 71 274 200">+389 71 274 200</a>
             
-        </footer>
-        <script src="blog.js"></script>
+            
+        </div>
+        <div class="social-containerm">
+          <ul class="social-iconsm">
+              <li><a href="#"><i class="fa fa-instagram"></i></a></li>
+              <li><a  href="#"><i class="fa fa-facebook"></i></a></li>
+              <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+          </ul>
+  </div>
+    </footer>
+    <p  style="text-align: center; color: #10283D;">© 2024 EcoRevive. All Rights Reserved.</p>
 </body>
 </html>
